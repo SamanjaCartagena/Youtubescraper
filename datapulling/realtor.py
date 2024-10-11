@@ -21,24 +21,31 @@ import datetime
 
 
 driver = webdriver.Chrome()
+
 driver.get("https://www.youtube.com/")
 time.sleep(3)
+
 driver.maximize_window()
 
 search=driver.find_elements(By.TAG_NAME,"input")
 
 search[0].click()
 
-search[0].send_keys('Tellula Donald')
+search[0].send_keys('Kevin Ray Ward')
 
 btn=driver.find_element(By.XPATH,"//button[@aria-label='Search']").click()
 time.sleep(10)
 
-found=driver.find_elements(By.XPATH,"//*[contains(text(), 'Tellula Donald')]")
 
-if len(found)>5:
-    print('Coding with Samanja exists')
+
+found=driver.find_elements(By.XPATH,"//*[contains(text(), 'Kevin Ray Ward')]")
+
+realtor=driver.find_elements(By.XPATH,"//*[contains(text(), 'real estate')]")
+
+if len(found)>5 and len(realtor)>0:
+    print('Daniel Kosasih exists')
     print(len(found))
+    print(len(realtor))
     
 else:
     print('No')
